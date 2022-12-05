@@ -13,7 +13,6 @@ def chunks(iterable, chunk_size):
 
     if chunk:
         yield chunk
-    
 
 
 def main():
