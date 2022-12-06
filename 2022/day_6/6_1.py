@@ -1,6 +1,6 @@
 def main():
     with open('6.txt', 'r') as f:
-        data = f.read().split('\n')[0]
+        data = f.read()
         return find_start_marker(data)
 
 
