@@ -1,6 +1,3 @@
-from contextlib import suppress
-
-
 MOVES = {
     # y, x
     "L": (0, -1),
