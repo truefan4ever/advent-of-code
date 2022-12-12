@@ -1,8 +1,8 @@
-def main():
+def main() -> None:
     with open('10.txt', 'r') as f:
         data = [line.split() for line in f.read().split('\n')]
 
-    return count_signal_strengths(data)
+    render_crt(data)
 
 
 def get_position_on_crt(elements_in_row: int, id_: int) -> tuple:
@@ -12,7 +12,7 @@ def get_position_on_crt(elements_in_row: int, id_: int) -> tuple:
     return row - 1, column - 1
 
 
-def draw_pixel(crt: list, cycle: int, register: int):
+def draw_pixel(crt: list, cycle: int, register: int) -> None:
     row_len = len(crt[0])
     # To index from 1
     sprite_middle_id = register + 1
@@ -26,11 +26,11 @@ def draw_pixel(crt: list, cycle: int, register: int):
         crt[drawing_p[0]][drawing_p[1]] = "#"
 
 
-def count_signal_strengths(instructions):
+def render_crt(instructions: list) -> None:
     cycle = 0
     register = 1
 
-    crt = [["." for _ in range(40)] for _ in range(6)]
+    crt = [[" " for _ in range(40)] for _ in range(6)]
 
     for instruction in instructions:
         if len(instruction) == 1:
@@ -44,8 +44,9 @@ def count_signal_strengths(instructions):
             if i == 2:
                 register += int(instruction[-1])
 
-    return ["".join(row) for row in crt]
+    for row in crt:
+        print("".join(row))
 
 
 if __name__ == "__main__":
-    print(main())
+    main()
