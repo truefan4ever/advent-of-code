@@ -2,10 +2,10 @@ def main():
     with open('10.txt', 'r') as f:
         data = [line.split() for line in f.read().split('\n')]
 
-    return foo(data)
+    return count_signal_strengths(data)
 
 
-def foo(instructions):
+def count_signal_strengths(instructions):
     cycle = 0
     register = 1
     strengths = []
