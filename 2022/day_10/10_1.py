@@ -8,20 +8,24 @@ def main():
 def count_signal_strengths(instructions):
     cycle = 0
     register = 1
-    strengths = []
+    strengths = 0
     for instruction in instructions:
         if len(instruction) == 1:
             cycle += 1
-            strengths.append(cycle * register)
+            if cycle in [20, 60, 100, 140, 180, 220]:
+                strengths += cycle * register
+
             continue
 
         for i in range(1, 3):
             cycle += 1
-            strengths.append(cycle * register)
+            if cycle in [20, 60, 100, 140, 180, 220]:
+                strengths += cycle * register
+
             if i == 2:
                 register += int(instruction[-1])
 
-    return sum([strengths[19], strengths[59], strengths[99], strengths[139], strengths[179], strengths[219]])
+    return strengths
 
 
 if __name__ == "__main__":
