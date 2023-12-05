@@ -15,23 +15,23 @@ MAP = {
 def main():
     with open('01.txt', 'r') as f:
         result = []
-        for i in f.read().split("\n"):
+        for line in f.read().split("\n"):
             substring = ""
             digits = []
-            for s in i:
-                if s.isdigit():
-                    digits.append(s)
+            for symbol in line:
+                if symbol.isdigit():
+                    digits.append(symbol)
                     substring = ""
                     continue
 
-                if s.isalpha():
-                    substring += s
+                if symbol.isalpha():
+                    substring += symbol
                     if any(key.startswith(substring) for key in MAP.keys()):
                         if substring in MAP.keys():
                             digits.append(str(MAP[substring]))
-                            substring = s if any(substring.endswith(i) for i in "eon") else ""
+                            substring = symbol if any(substring.endswith(i) for i in "eont") else ""
                     else:
-                        substring = "" if substring == s else s
+                        substring = "" if substring == symbol else substring[1:]
 
             result.append(int(f"{digits[0]}{digits[-1]}"))
         
