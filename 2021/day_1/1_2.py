@@ -1,6 +1,6 @@
 def main():
-    with open('1.txt', 'r') as f:
-        data = [int(i) for i in f.read().split('\n')]
+    with open("1.txt", "r") as f:
+        data = [int(i) for i in f.read().split("\n")]
 
     transformed_data = transform_data(data)
     print(count_increases(transformed_data))
@@ -10,7 +10,7 @@ def transform_data(data: list) -> list:
     transformed_data = []
     for i, v in enumerate(data):
         try:
-            d = [data[i], data[i+1], data[i+2]]
+            d = [data[i], data[i + 1], data[i + 2]]
         except IndexError:
             break
 
@@ -28,8 +28,8 @@ def count_increases(data: list) -> int:
         if element > val:
             counter += 1
 
-        val = element            
-    
+        val = element
+
     return counter - 1
 
 

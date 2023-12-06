@@ -1,6 +1,6 @@
 def main():
-    with open('3.txt', 'r') as f:
-        data = f.read().split('\n')
+    with open("3.txt", "r") as f:
+        data = f.read().split("\n")
 
     gamma, epsilon = transform_data(data)
     print(int(gamma, 2) * int(epsilon, 2))
@@ -12,12 +12,12 @@ def transform_data(data: list):
         d = [int(j[i]) for j in data]
         transformed_data.append(d)
 
-    gamma = ''
+    gamma = ""
     for i in transformed_data:
         most_common_bit = max(set(i), key=i.count)
         gamma += str(most_common_bit)
 
-    epsilon = ''
+    epsilon = ""
     for i in gamma:
         epsilon += str(int(i) ^ 1)
 

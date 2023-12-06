@@ -1,6 +1,6 @@
 def main():
-    with open('1.txt', 'r') as f:
-        data = [[int(i) for i in elf.split('\n')] for elf in f.read().split('\n\n')]
+    with open("1.txt", "r") as f:
+        data = [[int(i) for i in elf.split("\n")] for elf in f.read().split("\n\n")]
         return count_calories(data=data)
 
 

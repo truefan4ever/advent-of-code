@@ -13,7 +13,7 @@ MAP = {
 
 
 def main():
-    with open('01.txt', 'r') as f:
+    with open("01.txt", "r") as f:
         result = []
         for line in f.read().split("\n"):
             substring = ""
@@ -29,12 +29,16 @@ def main():
                     if any(key.startswith(substring) for key in MAP.keys()):
                         if substring in MAP.keys():
                             digits.append(str(MAP[substring]))
-                            substring = symbol if any(substring.endswith(i) for i in "eont") else ""
+                            substring = (
+                                symbol
+                                if any(substring.endswith(i) for i in "eont")
+                                else ""
+                            )
                     else:
                         substring = "" if substring == symbol else substring[1:]
 
             result.append(int(f"{digits[0]}{digits[-1]}"))
-        
+
         print(result)
         return sum(result)
 

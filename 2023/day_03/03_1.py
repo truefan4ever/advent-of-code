@@ -2,7 +2,7 @@ SYMBOLS_TO_IGNORE = ".0123456789"
 
 
 def main():
-    with open('03.txt', 'r') as f:
+    with open("03.txt", "r") as f:
         result = []
         matrix = [line for line in f.read().split("\n")]
         for line_id, line in enumerate(matrix):
@@ -14,45 +14,18 @@ def main():
                 if digit.isdigit():
                     num += digit
                     if not add:
-                        # top left
-                        if line_id > 0 and digit_id > 0 and matrix[line_id - 1][digit_id - 1] not in SYMBOLS_TO_IGNORE:
-                            add = True
-                            continue
-
-                        # top
-                        if line_id > 0 and matrix[line_id - 1][digit_id] not in SYMBOLS_TO_IGNORE:
-                            add = True
-                            continue
-
-                        # left
-                        if digit_id > 0 and matrix[line_id][digit_id - 1] not in SYMBOLS_TO_IGNORE:
-                            add = True
-                            continue
-
-                        # bottom left
-                        if line_id + 1 < len(matrix) and digit_id > 0 and matrix[line_id + 1][digit_id - 1] not in SYMBOLS_TO_IGNORE:
-                            add = True
-                            continue
-
-                        # bottom
-                        if line_id + 1 < len(matrix) and matrix[line_id + 1][digit_id] not in SYMBOLS_TO_IGNORE:
-                            add = True
-                            continue
-
-                        # top right
-                        if line_id > 0 and digit_id + 1 < len(line) and matrix[line_id - 1][digit_id + 1] not in SYMBOLS_TO_IGNORE:
-                            add = True
-                            continue
-
-                        # right
-                        if digit_id + 1 < len(line) and matrix[line_id][digit_id + 1] not in SYMBOLS_TO_IGNORE:
-                            add = True
-                            continue
-
-                        # bottom right
-                        if line_id + 1 < len(matrix) and digit_id + 1 < len(line) and matrix[line_id + 1][digit_id + 1] not in SYMBOLS_TO_IGNORE:
-                            add = True
-                            continue
+                        for line_index in (-1, 0, 1):
+                            for digit_index in (-1, 0, 1):
+                                if (
+                                    0 <= line_id + line_index < len(matrix)
+                                    and 0 < digit_id + digit_index < len(line)
+                                    and matrix[line_id + line_index][
+                                        digit_id + digit_index
+                                    ]
+                                    not in SYMBOLS_TO_IGNORE
+                                ):
+                                    add = True
+                                    break
 
                 else:
                     if num and add:

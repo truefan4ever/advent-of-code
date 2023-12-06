@@ -2,7 +2,11 @@ from functools import reduce
 
 
 def deep_get(dictionary: dict, keys: list, default=None):
-    return reduce(lambda d, key: d.get(key, default) if isinstance(d, dict) else default, keys, dictionary)
+    return reduce(
+        lambda d, key: d.get(key, default) if isinstance(d, dict) else default,
+        keys,
+        dictionary,
+    )
 
 
 def calculate_total_size(dict_: dict) -> int:
@@ -25,8 +29,8 @@ def get_nested_values(dict_: dict):
 
 
 def main():
-    with open('7.txt', 'r') as f:
-        data = f.read().split('\n')
+    with open("7.txt", "r") as f:
+        data = f.read().split("\n")
 
         file_system = dict()
         current_path = []
@@ -53,7 +57,7 @@ def main():
 
         calculate_total_size(file_system)
         return sum(i for i in get_nested_values(file_system) if i < 100000)
-        
+
 
 if __name__ == "__main__":
     print(main())

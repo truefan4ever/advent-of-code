@@ -16,8 +16,8 @@ def chunks(iterable, chunk_size):
 
 
 def main():
-    with open('5.txt', 'r') as f:
-        data = [pair for pair in f.read().split('\n')]
+    with open("5.txt", "r") as f:
+        data = [pair for pair in f.read().split("\n")]
         stack_lines = []
         moves = []
         for index, value in enumerate(data):
@@ -30,7 +30,15 @@ def main():
         stack_number = int(max(data[len(stack_lines)].replace(" ", "")))
 
         # Remove redundant symbols
-        stack_lines = [[c.replace("[", "").replace("] ", "").replace("]", "") if '   ' not in c else None for c in chunks(line, 4)] for line in stack_lines]
+        stack_lines = [
+            [
+                c.replace("[", "").replace("] ", "").replace("]", "")
+                if "   " not in c
+                else None
+                for c in chunks(line, 4)
+            ]
+            for line in stack_lines
+        ]
 
         # Get deques
         deques = [deque() for _ in range(stack_number)]
@@ -38,7 +46,7 @@ def main():
             for index, crate in enumerate(line):
                 if crate:
                     deques[index].append(crate)
-        
+
         # Get parsed moves
         parsed_moves = []
         for move in moves:
@@ -52,6 +60,7 @@ def main():
             parsed_moves.append(parsed_move)
 
         return move_crates(deques, parsed_moves)
+
 
 def move_crates(data, moves):
     # Apply moves
@@ -67,7 +76,7 @@ def move_crates(data, moves):
             message += d.pop()
         except IndexError:
             continue
-    
+
     return message
 
 

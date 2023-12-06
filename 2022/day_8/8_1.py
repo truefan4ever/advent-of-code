@@ -1,6 +1,6 @@
 def main():
-    with open('8.txt', 'r') as f:
-        data = [[int(i) for i in line] for line in f.read().split('\n')]
+    with open("8.txt", "r") as f:
+        data = [[int(i) for i in line] for line in f.read().split("\n")]
         return find_visible_trees(data)
 
 
@@ -11,7 +11,12 @@ def find_visible_trees(matrix: list) -> int:
 
     for row_index, row in enumerate(matrix):
         for tree_index, tree in enumerate(row):
-            if row_index == 0 or row_index == len(matrix) - 1 or tree_index == 0 or tree_index == len(row) - 1:
+            if (
+                row_index == 0
+                or row_index == len(matrix) - 1
+                or tree_index == 0
+                or tree_index == len(row) - 1
+            ):
                 # don't check borders
                 continue
 
@@ -22,19 +27,23 @@ def find_visible_trees(matrix: list) -> int:
                 continue
 
             # Check from the right
-            trees_to_the_right = row[tree_index + 1:]
+            trees_to_the_right = row[tree_index + 1 :]
             if tree not in trees_to_the_right and max(trees_to_the_right) < tree:
                 visible_trees += 1
                 continue
 
             # Check from the top
-            trees_to_the_top = [row[tree_index] for index, row in enumerate(matrix) if index < row_index]
+            trees_to_the_top = [
+                row[tree_index] for index, row in enumerate(matrix) if index < row_index
+            ]
             if tree not in trees_to_the_top and max(trees_to_the_top) < tree:
                 visible_trees += 1
                 continue
 
             # Check from the bottom
-            trees_to_the_bottom = [row[tree_index] for index, row in enumerate(matrix) if index > row_index]
+            trees_to_the_bottom = [
+                row[tree_index] for index, row in enumerate(matrix) if index > row_index
+            ]
             if tree not in trees_to_the_bottom and max(trees_to_the_bottom) < tree:
                 visible_trees += 1
                 continue

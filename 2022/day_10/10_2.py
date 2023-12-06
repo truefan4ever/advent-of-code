@@ -1,6 +1,6 @@
 def main() -> None:
-    with open('10.txt', 'r') as f:
-        data = [line.split() for line in f.read().split('\n')]
+    with open("10.txt", "r") as f:
+        data = [line.split() for line in f.read().split("\n")]
 
     render_crt(data)
 

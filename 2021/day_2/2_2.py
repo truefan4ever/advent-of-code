@@ -1,6 +1,6 @@
 def main():
-    with open('2.txt', 'r') as f:
-        data = f.read().split('\n')
+    with open("2.txt", "r") as f:
+        data = f.read().split("\n")
 
     position, depth = calculate_position(data)
     print(position, depth)
@@ -12,16 +12,16 @@ def calculate_position(data: list) -> int:
     depth = 0
     aim = 0
     for element in data:
-        action, val = element.split(' ')
-        if action == 'forward':
+        action, val = element.split(" ")
+        if action == "forward":
             position += int(val)
             foo = int(val) * aim
             depth += foo
-        elif action == 'down':
+        elif action == "down":
             aim += int(val)
-        elif action == 'up':
+        elif action == "up":
             aim -= int(val)
-    
+
     return position, depth
 
 

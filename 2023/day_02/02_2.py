@@ -2,7 +2,7 @@ import re
 
 
 def main():
-    with open('02.txt', 'r') as f:
+    with open("02.txt", "r") as f:
         result = []
         for line in f.read().split("\n"):
             _, sets = line.split(": ")
@@ -11,7 +11,7 @@ def main():
                 "red": [],
                 "blue": [],
             }
-            for num, color in re.compile(r'(\d+) (\w+)').findall(sets):
+            for num, color in re.compile(r"(\d+) (\w+)").findall(sets):
                 colors_map[color].append(int(num))
 
             set_result = 1

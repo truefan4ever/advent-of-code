@@ -2,7 +2,11 @@ from functools import reduce
 
 
 def deep_get(dictionary: dict, keys: list, default=None):
-    return reduce(lambda d, key: d.get(key, default) if isinstance(d, dict) else default, keys, dictionary)
+    return reduce(
+        lambda d, key: d.get(key, default) if isinstance(d, dict) else default,
+        keys,
+        dictionary,
+    )
 
 
 def calculate_total_size(dict_: dict) -> int:
@@ -28,8 +32,8 @@ def main():
     total_capacity = 70000000
     free_space_for_update = 30000000
 
-    with open('7.txt', 'r') as f:
-        data = f.read().split('\n')
+    with open("7.txt", "r") as f:
+        data = f.read().split("\n")
 
         file_system = dict()
         current_path = []
@@ -55,8 +59,12 @@ def main():
                 deep_get(file_system, current_path)[split_line[-1]] = int(split_line[0])
 
         calculate_total_size(file_system)
-        min_space_to_remove = free_space_for_update - (total_capacity - file_system["total"])
-        return min(i for i in get_nested_values(file_system) if i >= min_space_to_remove)
+        min_space_to_remove = free_space_for_update - (
+            total_capacity - file_system["total"]
+        )
+        return min(
+            i for i in get_nested_values(file_system) if i >= min_space_to_remove
+        )
 
 
 if __name__ == "__main__":

@@ -1,9 +1,9 @@
 def main():
-    with open('3.txt', 'r') as f:
-        data = f.read().split('\n')
+    with open("3.txt", "r") as f:
+        data = f.read().split("\n")
 
-    ox_rating = get_rating(data, 'most')
-    co2_rating = get_rating(data, 'least')
+    ox_rating = get_rating(data, "most")
+    co2_rating = get_rating(data, "least")
     print(int(ox_rating, 2) * int(co2_rating, 2))
 
 
@@ -16,7 +16,7 @@ def count_bits(bits, state):
         elif b == 0:
             zero_count += 1
 
-    if state == 'most':
+    if state == "most":
         if one_count == zero_count:
             return 1
         elif one_count > zero_count:
@@ -24,21 +24,23 @@ def count_bits(bits, state):
         elif one_count < zero_count:
             return 0
 
-    elif state == 'least':
+    elif state == "least":
         if one_count == zero_count:
             return 0
         elif one_count > zero_count:
             return 0
         elif one_count < zero_count:
             return 1
+
 
 def get_elms(lst, index, value):
     a = []
     for el in lst:
         if el[index] == str(value):
             a.append(el)
-    
+
     return a
+
 
 def get_rating(raw_data: list, state: str):
     for i, _ in enumerate(raw_data[0]):

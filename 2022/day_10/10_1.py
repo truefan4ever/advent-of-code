@@ -1,6 +1,6 @@
 def main():
-    with open('10.txt', 'r') as f:
-        data = [line.split() for line in f.read().split('\n')]
+    with open("10.txt", "r") as f:
+        data = [line.split() for line in f.read().split("\n")]
 
     return count_signal_strengths(data)
 

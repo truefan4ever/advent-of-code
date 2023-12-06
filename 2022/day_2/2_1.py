@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class Opponent(str, Enum):
     ROCK = "A"
     PAPER = "B"
@@ -11,22 +12,31 @@ class Me(str, Enum):
     PAPER = "Y"
     SCISSORS = "Z"
 
-MY_ELEMENT_SCORES = {
-    Me.ROCK: 1,
-    Me.PAPER: 2,
-    Me.SCISSORS: 3
-}
+
+MY_ELEMENT_SCORES = {Me.ROCK: 1, Me.PAPER: 2, Me.SCISSORS: 3}
 
 SCORES = {
-    ((Opponent.PAPER, Me.ROCK), (Opponent.ROCK, Me.SCISSORS), (Opponent.SCISSORS, Me.PAPER)): 0,
-    ((Opponent.PAPER, Me.PAPER), (Opponent.ROCK, Me.ROCK), (Opponent.SCISSORS, Me.SCISSORS)): 3,
-    ((Opponent.PAPER, Me.SCISSORS), (Opponent.ROCK, Me.PAPER), (Opponent.SCISSORS, Me.ROCK)): 6,
+    (
+        (Opponent.PAPER, Me.ROCK),
+        (Opponent.ROCK, Me.SCISSORS),
+        (Opponent.SCISSORS, Me.PAPER),
+    ): 0,
+    (
+        (Opponent.PAPER, Me.PAPER),
+        (Opponent.ROCK, Me.ROCK),
+        (Opponent.SCISSORS, Me.SCISSORS),
+    ): 3,
+    (
+        (Opponent.PAPER, Me.SCISSORS),
+        (Opponent.ROCK, Me.PAPER),
+        (Opponent.SCISSORS, Me.ROCK),
+    ): 6,
 }
 
 
 def main():
-    with open('2.txt', 'r') as f:
-        data = [tuple(round_.split(' ')) for round_ in f.read().split('\n')]
+    with open("2.txt", "r") as f:
+        data = [tuple(round_.split(" ")) for round_ in f.read().split("\n")]
         return count_total_score(data=data)
 
 

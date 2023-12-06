@@ -1,6 +1,6 @@
 def main():
-    with open('1.txt', 'r') as f:
-        data = [int(i) for i in f.read().split('\n')]
+    with open("1.txt", "r") as f:
+        data = [int(i) for i in f.read().split("\n")]
 
     counter = count_increases(data)
     print(counter)
@@ -13,8 +13,8 @@ def count_increases(data: list) -> int:
         if element > val:
             counter += 1
 
-        val = element            
-    
+        val = element
+
     return counter - 1
 
 

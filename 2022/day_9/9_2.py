@@ -8,8 +8,8 @@ MOVES = {
 
 
 def main():
-    with open('9.txt', 'r') as f:
-        data = [line.split(" ") for line in f.read().split('\n')]
+    with open("9.txt", "r") as f:
+        data = [line.split(" ") for line in f.read().split("\n")]
 
     return simulate_motions(data)
 
@@ -23,14 +23,23 @@ def move_tail(h_position, t_position):
 
     if y_axis_diff == 2 and x_axis_diff == 2:
         # Use move tail along y and  x
-        return t_position[0] + 1 if h_position[0] > t_position[0] else t_position[0] - 1, t_position[1] + 1 if h_position[1] > t_position[1] else t_position[1] - 1
+        return (
+            t_position[0] + 1 if h_position[0] > t_position[0] else t_position[0] - 1,
+            t_position[1] + 1 if h_position[1] > t_position[1] else t_position[1] - 1,
+        )
 
     if x_axis_diff == 2:
         # Use axis y from head and move tail along x
-        return h_position[0], t_position[1] + 1 if h_position[1] > t_position[1] else t_position[1] - 1
+        return (
+            h_position[0],
+            t_position[1] + 1 if h_position[1] > t_position[1] else t_position[1] - 1,
+        )
     if y_axis_diff == 2:
         # Use axis x from head and move tail along y
-        return t_position[0] + 1 if h_position[0] > t_position[0] else t_position[0] - 1, h_position[1]
+        return (
+            t_position[0] + 1 if h_position[0] > t_position[0] else t_position[0] - 1,
+            h_position[1],
+        )
 
 
 def simulate_motions(routes: list):
