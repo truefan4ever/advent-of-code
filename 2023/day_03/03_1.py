@@ -6,10 +6,8 @@ def main():
         result = []
         matrix = [line for line in f.read().split("\n")]
         for line_id, line in enumerate(matrix):
-            buffer = []
             num = ""
             add = False
-            neg = False
             for digit_id, digit in enumerate(line):
                 if digit.isdigit():
                     num += digit
@@ -29,20 +27,13 @@ def main():
 
                 else:
                     if num and add:
-                        if neg:
-                            num = f"-{num}"
-                        buffer.append(int(num))
+                        result.append(int(num))
 
                     num = ""
                     add = False
-                    neg = False
 
             if num and add:
-                if neg:
-                    num = f"-{num}"
-                buffer.append(int(num))
-
-            result.extend(buffer)
+                result.append(int(num))
 
         return sum(result)
 
